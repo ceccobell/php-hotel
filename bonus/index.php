@@ -38,12 +38,13 @@
     ];
     $filtered_array = $hotels;
     $is_parking = isset($_GET['flexSwitchCheckDefault']) && $_GET['flexSwitchCheckDefault'] === 'on';
+    $selected_vote = isset($_GET['vote']) ? $_GET['vote'] : null;
 
     if($is_parking) {
         $tempArray = [];
 
         foreach($filtered_array as $item) {
-            if ($item['parking'] == $is_parking) {
+            if (($item['parking'] == $is_parking) && ($item['vote'] == $selected_vote )) {
                 $tempArray [] = $item; 
             };
         };
@@ -68,6 +69,16 @@
                     <label class="form-check-label" for="flexSwitchCheckDefault">Parcheggio Disponibile:</label>
                     <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" name="flexSwitchCheckDefault">
                 </div>
+            </div>
+            <div class="col-3 align-items-center d-flex">
+                <select class="form-select" aria-label="Default select example" name="vote">
+                    <option selected>Seleziona il voto</option>
+                    <option value="1">1 stella</option>
+                    <option value="2">2 stelle</option>
+                    <option value="3">3 stelle</option>
+                    <option value="4">4 stelle</option>
+                    <option value="5">5 stelle</option>
+                </select>
             </div>
             <div class="col-3 align-items-center d-flex">
                 <button type="submit" class="btn btn-primary">cerca</button>
@@ -95,6 +106,12 @@
                 <th scope="row">Parcheggio</th>
                 <?php foreach ($filtered_array as $hotel) { ?>
                     <td><?php echo $hotel['parking'] ? "Parcheggio Disponibile" : "Parcheggio non disponibile" ?></td>
+                <?php } ?>
+            </tr>
+            <tr>
+                <th scope="row">Voto</th>
+                <?php foreach ($filtered_array as $hotel) { ?>
+                    <td><?php echo $hotel['vote'] ?></td>
                 <?php } ?>
             </tr>
             <tr>

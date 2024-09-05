@@ -72,6 +72,12 @@
                 <?php } ?>
             </tr>
             <tr>
+                <th scope="row">Voto</th>
+                <?php foreach ($filtered_array as $hotel) { ?>
+                    <td><?php echo $hotel['vote'] ?></td>
+                <?php } ?>
+            </tr>
+            <tr>
                 <th scope="row">Distanza dal centro</th>
                 <?php foreach ($hotels as $hotel) { ?>
                     <td><?php echo $hotel['distance_to_center'] ?> Km</td>
