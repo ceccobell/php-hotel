@@ -45,13 +45,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Hotels</title>
 </head>
 <body>
-    <?php foreach ($hotels as $hotel) {
-        foreach ($hotel as $informations) {
-            echo $informations. "<br>";
-        };
-    }; ?>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <?php foreach ($hotels as $hotel) { ?>
+                    <th scope="col"><?php echo $hotel['name'] ?></th>
+                <?php } ?>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">Descrizione</th>
+                <?php foreach ($hotels as $hotel) { ?>
+                    <td><?php echo $hotel['description'] ?></td>
+                <?php } ?>
+            </tr>
+            <tr>
+                <th scope="row">Parcheggio</th>
+                <?php foreach ($hotels as $hotel) { ?>
+                    <td><?php echo $hotel['parking'] ? "Parcheggio Disponibile" : "Parcheggio non disponibile" ?></td>
+                <?php } ?>
+            </tr>
+            <tr>
+                <th scope="row">Distanza dal centro</th>
+                <?php foreach ($hotels as $hotel) { ?>
+                    <td><?php echo $hotel['distance_to_center'] ?> Km</td>
+                <?php } ?>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>
