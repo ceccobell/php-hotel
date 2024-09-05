@@ -48,6 +48,10 @@
     <title>Hotels</title>
 </head>
 <body>
-    
+    <?php foreach ($hotels as $hotel) {
+        foreach ($hotel as $informations) {
+            echo $informations. "<br>";
+        };
+    }; ?>
 </body>
 </html>
